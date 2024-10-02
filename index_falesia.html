@@ -53,7 +53,7 @@
 		});
 		
 		// Falésia
-		Potree.loadPointCloud("./falesia_potree/cloud.js", "Monumento Beberibe", function(e){
+		Potree.loadPointCloud("./examples/falesia_potree/cloud.js", "Monumento Beberibe", function(e){
 			viewer.scene.addPointCloud(e.pointcloud);
 			e.pointcloud.projection= "+proj=utm +zone=24 +south +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs +type=crs"
 			let material = e.pointcloud.material;
