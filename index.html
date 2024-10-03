@@ -62,10 +62,14 @@
 			let material = e.pointcloud.material;
 			material.size = 1;
 			material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
-			
 			viewer.fitToScreen();
 		});
-		
+		Potree.loadPointCloud("./TEST_FRENTE_FALESIA/cloud.js", "Frente Falésia", function(e){
+			viewer.scene.addPointCloud(e.pointcloud);
+			let material = e.pointcloud.material;
+			material.size = 1;
+			material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
+		});
 	</script>
 	
 	
