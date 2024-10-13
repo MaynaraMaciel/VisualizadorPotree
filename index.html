@@ -21,7 +21,7 @@
     <script src="./libs/jquery-ui/jquery-ui.min.js"></script>
 
     <script src="./libs/other/BinaryHeap.js"></script>
-    <!-- <script src="./libs/three.js/build/three.js"></script> -->
+    <script src="./libs/three.js/build/three.js"></script>
     <script src="./libs/tween/tween.min.js"></script>
     <script src="./libs/d3/d3.js"></script>
     <script src="./libs/proj4/proj4.js"></script>
@@ -63,26 +63,28 @@
             let material = pointcloud.material;
             material.size = 1;
             material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
-            material.shape = Potree.PointShape.SQUARE;
+            material.shape = Potree.PointShape.CIRCLE;
 
             scene.addPointCloud(pointcloud);
 
-            // scene.view.position.set(600894.351, 9540150.653, 689.326);
-            // scene.view.lookAt(600440.435, 9539772.887, 177.294);
-            viewer.fitToScreen();
+            scene.view.position.set(-48.513, -3349.296, -6356853.705);
+            scene.view.lookAt(-10.260, -3336.031, -6356889.997);
         });
 
-        Potree.loadPointCloud("./TEST_FRENTE_FALESIA/cloud.js", "Frente Falésia", (e) => {
+        Potree.loadPointCloud("./TEST_FRENTE_FALESIA/cloud.js", "Frente Falésia", e => {
             viewer.scene.addPointCloud(e.pointcloud);
             let pointcloud = e.pointcloud;
             let material = e.pointcloud.material;
             material.size = 0.25;
             material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
-            material.shape = Potree.PointShape.CIRCLE;
+            material.shape = Potree.PointShape.SQUARE;
             material.activeAttributeName = "rgba";
+
             scene.addPointCloud(e.pointcloud);
-            scene.view.position.set(-46.589, -3341.546, -6356860.414);
-            scene.view.lookAt(-10.556, -3335.170, -6356890.170);
+
+            scene.view.position.set(-48.513, -3349.296, -6356853.705);
+            scene.view.lookAt(-10.260, -3336.031, -6356889.997);
+            viewer.fitToScreen();
         });
 
     </script>
