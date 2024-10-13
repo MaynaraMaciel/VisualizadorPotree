@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta name="Monumento_Beberibe" content="" />
     <meta name="author" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <title>Potree_Viewer_Beberibe</title>
 
     <link rel="stylesheet" type="text/css" href="./build/potree/potree.css" />
-    <link rel="stylesheet" type="text/css" href="./libs/jquery-ui/jquery-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./libs/jquery-ui/jquery-ui.min.css" />
     <link rel="stylesheet" type="text/css" href="./libs/perfect-scrollbar/css/perfect-scrollbar.css" />
     <link rel="stylesheet" type="text/css" href="./libs/openlayers3/ol.css" />
-    <link rel="stylesheet" type="text/css" href="./libs/spectrum/spectrum.css"/>
-    <link rel="stylesheet" type="text/css" href="./libs/jstree/themes/mixed/style.css"/>
-  </head>
+    <link rel="stylesheet" type="text/css" href="./libs/spectrum/spectrum.css" />
+    <link rel="stylesheet" type="text/css" href="./libs/jstree/themes/mixed/style.css" />
+</head>
 
-  <body>
+<body>
     <script src="./libs/jquery/jquery-3.1.1.min.js"></script>
     <script src="./libs/spectrum/spectrum.js"></script>
     <script src="./libs/jquery-ui/jquery-ui.min.js"></script>
@@ -34,64 +35,66 @@
     <script src="./libs/shapefile/shapefile.js"></script>
 
     <div class="potree_container" style="position: absolute; width: 100%; height: 100%; left: 0px; top: 0px">
-      <div id="potree_render_area">
-        <div id="cesiumContainer" style="position: absolute; width: 100%; height: 100%; background-color: black;"></div>
-      </div>
-      <div id="potree_sidebar_container"></div>
+        <div id="potree_render_area">
+            <div id="cesiumContainer" style="position: absolute; width: 100%; height: 100%; background-color: black;">
+            </div>
+        </div>
+        <div id="potree_sidebar_container"></div>
     </div>
 
     <script>
-      window.viewer = new Potree.Viewer( document.getElementById("potree_render_area"));
-      viewer.setEDLEnabled(true);
-      viewer.setEDLRadius(0.5);
-      viewer.setEDLStrength(0.1);
-      viewer.setBackground("none");
-      viewer.setFOV(60);
-      viewer.setPointBudget(3_000_000);
-      viewer.loadSettingsFromURL();
-      viewer.setDescription(
-        "Modelo digital de nuvem de pontos do Monumento Natural das Falésias de Beberibe."
-      );
+        window.viewer = new Potree.Viewer(document.getElementById("potree_render_area"));
+        viewer.setEDLEnabled(true);
+        viewer.setEDLRadius(0.5);
+        viewer.setEDLStrength(0.1);
+        viewer.setBackground("none");
+        viewer.setFOV(60);
+        viewer.setPointBudget(3_000_000);
+        viewer.loadSettingsFromURL();
+        viewer.setDescription(
+            "Modelo digital de nuvem de pontos do Monumento Natural das Falésias de Beberibe."
+        );
 
-      viewer.loadGUI(() => {
-        viewer.setLanguage("en");
-        $("#menu_appearance").next().show();
-        $("#menu_Scene").next().hide();
-        $("#menu_clipping").next().show();
-        viewer.toggleSidebar();
-        viewer.mapView.showSources(false);
-      });
+        viewer.loadGUI(() => {
+            viewer.setLanguage("en");
+            $("#menu_appearance").next().show();
+            $("#menu_Scene").next().hide();
+            $("#menu_clipping").next().show();
+            viewer.toggleSidebar();
+            viewer.mapView.showSources(false);
+        });
 
-      Potree.loadPointCloud("./falesia_potree/cloud.js", "Falésia", (e) => {
-        let scene = viewer.scene;
-        let pointcloud = e.pointcloud;
-        let material = e.pointcloud.material;
-        let pointcloudProjection = e.pointcloud.projection;
-        material.size = 0.25;
-        material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
-        material.shape = Potree.PointShape.CIRCLE;
-        // e.pointcloud.position.z = 0;
+        Potree.loadPointCloud("./falesia_potree/cloud.js", "Falésia", (e) => {
+            let scene = viewer.scene;
+            let pointcloud = e.pointcloud;
+            let material = e.pointcloud.material;
+            let pointcloudProjection = e.pointcloud.projection;
+            material.size = 0.25;
+            material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
+            material.shape = Potree.PointShape.CIRCLE;
+            // e.pointcloud.position.z = 0;
 
-        scene.addPointCloud(e.pointcloud);
-		    // scene.view.position.set(600894.351, 9540150.653, 689.326);
-		    // scene.view.lookAt(600440.435, 9539772.887, 177.294);
-        Potree.measureTimings = true;
-      });
-      
-      Potree.loadPointCloud("./TEST_FRENTE_FALESIA/cloud.js", "Frente Falésia", (e) => {
-        let scene = viewer.scene;
-        let pointcloud = e.pointcloud;
-        let material = e.pointcloud.material;
-        let pointcloudProjection = e.pointcloud.projection;
-        material.size = 0.25;
-        material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
-        material.shape = Potree.PointShape.CIRCLE;
-        scene.addPointCloud(e.pointcloud);
-        scene.view.position.set(-46.589, -3341.546, -6356860.414);
-        scene.view.lookAt(-10.556, -3335.170, -6356890.170);
-        Potree.measureTimings = true;
-      });
+            scene.addPointCloud(e.pointcloud);
+            // scene.view.position.set(600894.351, 9540150.653, 689.326);
+            // scene.view.lookAt(600440.435, 9539772.887, 177.294);
+            Potree.measureTimings = true;
+        });
+
+        Potree.loadPointCloud("./TEST_FRENTE_FALESIA/cloud.js", "Frente Falésia", (e) => {
+            let scene = viewer.scene;
+            let pointcloud = e.pointcloud;
+            let material = e.pointcloud.material;
+            let pointcloudProjection = e.pointcloud.projection;
+            material.size = 0.25;
+            material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
+            material.shape = Potree.PointShape.CIRCLE;
+            scene.addPointCloud(e.pointcloud);
+            scene.view.position.set(-46.589, -3341.546, -6356860.414);
+            scene.view.lookAt(-10.556, -3335.170, -6356890.170);
+            // Potree.measureTimings = true;
+        });
 
     </script>
-  </body>
+</body>
+
 </html>
