@@ -81,17 +81,17 @@
         });
 
         Potree.loadPointCloud("./TEST_FRENTE_FALESIA/cloud.js", "Frente Falésia", (e) => {
-            let scene = viewer.scene;
+            viewer.scene.addPointCloud(e.pointcloud);
             let pointcloud = e.pointcloud;
             let material = e.pointcloud.material;
-            let pointcloudProjection = e.pointcloud.projection;
             material.size = 0.25;
             material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
             material.shape = Potree.PointShape.CIRCLE;
+            aterial.activeAttributeName = "rgba";
             scene.addPointCloud(e.pointcloud);
             scene.view.position.set(-46.589, -3341.546, -6356860.414);
             scene.view.lookAt(-10.556, -3335.170, -6356890.170);
-            // Potree.measureTimings = true;
+            Potree.measureTimings = true;
         });
 
     </script>
