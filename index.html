@@ -67,8 +67,8 @@
 
             scene.addPointCloud(pointcloud);
 
-            scene.view.position.set(600894.351, 9540150.653, 689.326);
-            scene.view.lookAt(600440.435, 9539772.887, 177.294);
+            // scene.view.position.set(600894.351, 9540150.653, 689.326);
+            // scene.view.lookAt(600440.435, 9539772.887, 177.294);
             viewer.fitToScreen();
         });
 
@@ -81,8 +81,8 @@
             material.shape = Potree.PointShape.CIRCLE;
             material.activeAttributeName = "rgba";
             scene.addPointCloud(e.pointcloud);
-            // scene.view.position.set(-46.589, -3341.546, -6356860.414);
-            // scene.view.lookAt(-10.556, -3335.170, -6356890.170);
+            scene.view.position.set(-46.589, -3341.546, -6356860.414);
+            scene.view.lookAt(-10.556, -3335.170, -6356890.170);
         });
 
     </script>
