@@ -66,11 +66,10 @@
             material.shape = Potree.PointShape.CIRCLE;
 
             scene.addPointCloud(pointcloud);
-
-            scene.view.position.set(-48.513, -3349.296, -6356853.705);
-            scene.view.lookAt(-10.260, -3336.031, -6356889.997);
+            scene.view.position.set(35.505, -3322.577, 6356911.694);
+            scene.view.lookAt(-10.260, -3336.031, 6356889.997);
         });
-
+        
         Potree.loadPointCloud("./TEST_FRENTE_FALESIA/cloud.js", "Frente Falésia", e => {
             viewer.scene.addPointCloud(e.pointcloud);
             let pointcloud = e.pointcloud;
@@ -79,14 +78,18 @@
             material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
             material.shape = Potree.PointShape.SQUARE;
             material.activeAttributeName = "rgba";
+            
+            // Inverte a posição de renderização da nuvem de pontos
+            pointcloud.position.z *= -1;
+            pointcloud.scale.set(1, 1, -1);
 
-            scene.addPointCloud(e.pointcloud);
-
-            scene.view.position.set(-48.513, -3349.296, -6356853.705);
-            scene.view.lookAt(-10.260, -3336.031, -6356889.997);
-            viewer.fitToScreen();
+            // Rendiza a nuvem de pontos na posição desejada
+            scene.addPointCloud(pointcloud);
+            viewer.fitToScreen();            
+            scene.view.position.set(35.505, -3322.577, 6356911.694);
+            scene.view.lookAt(-10.260, -3336.031, 6356889.997);
         });
-
+        
     </script>
 </body>
 
