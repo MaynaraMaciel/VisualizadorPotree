@@ -13,6 +13,22 @@
     <link rel="stylesheet" type="text/css" href="./libs/openlayers3/ol.css">
     <link rel="stylesheet" type="text/css" href="./libs/spectrum/spectrum.css">
     <link rel="stylesheet" type="text/css" href="./libs/jstree/themes/mixed/style.css">
+
+    <style>
+    #lg_ufc {
+        position: absolute;
+        right: 10px;
+        top: 830px;
+        z-index: 100;
+    }
+    #lg_geoce {
+        position: absolute;
+        right: 100px;
+        top: 850px;
+        z-index: 100;
+    }
+    </style>
+
 </head>
 
 <body>
@@ -37,6 +53,16 @@
         <div id="potree_sidebar_container"></div>
     </div>
 
+    <!-- Logo UFC e Laboratorio -->
+    <div id="lg_ufc">
+        <a rel="https://www.ufc.br/" target="_blank" title="Portal_UFC">
+            <img src="./Logo/lg_ufc.png" width="80" height="100" alt="UFC" /></a>
+    </div>
+    <div id="lg_geoce">
+        <a rel="https://geoce.ufc.br/pt/" target="_blank" title="GEOCE">
+            <img src="./Logo/lg_geoce.png" width="100" height="55" alt="GEOCE" /></a>
+    </div>
+
     <script type="module">
 
         window.viewer = new Potree.Viewer(document.getElementById("potree_render_area"));
@@ -46,7 +72,7 @@
         viewer.setPointBudget(3_000_000);
         viewer.loadSettingsFromURL();
         viewer.setDescription(
-            "Modelo digital de nuvem de pontos do Monumento Natural das Falésias de Beberibe."
+            "MODELO DIGITAL DE NUVEM DE PONTOS DO MONUMENTO NATURAL DAS FALÉSIAS DE BEBERIBE."
         );
 
         viewer.loadGUI(() => {
@@ -64,12 +90,13 @@
             material.size = 1;
             material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
             material.shape = Potree.PointShape.CIRCLE;
-
+            
+            scene.view.position.set(599396.001, 9540500.630, 110.841);
+            scene.view.lookAt(599240.637, 9540506.457, 17.331);
             scene.addPointCloud(pointcloud);
-            scene.view.position.set(35.505, -3322.577, 6356911.694);
-            scene.view.lookAt(-10.260, -3336.031, 6356889.997);
+            // viewer.fitToScreen();
         });
-        
+
         Potree.loadPointCloud("./TEST_FRENTE_FALESIA/cloud.js", "Frente Falésia", e => {
             viewer.scene.addPointCloud(e.pointcloud);
             let pointcloud = e.pointcloud;
@@ -82,14 +109,15 @@
             // Inverte a posição de renderização da nuvem de pontos
             pointcloud.position.z *= -1;
             pointcloud.scale.set(1, 1, -1);
-
+            
             // Rendiza a nuvem de pontos na posição desejada
             scene.addPointCloud(pointcloud);
-            viewer.fitToScreen();            
-            scene.view.position.set(35.505, -3322.577, 6356911.694);
-            scene.view.lookAt(-10.260, -3336.031, 6356889.997);
+            scene.view.position.set(599386.433, 9540513.535, 115.608);
+            scene.view.lookAt(599210.690, 9540511.620, 44.296);
+            // scene.view.position.set(35.505, -3322.577, 6356911.694);
+            // scene.view.lookAt(-10.260, -3336.031, 6356889.997);
         });
-        
+
     </script>
 </body>
 
