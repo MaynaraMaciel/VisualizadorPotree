@@ -1,30 +1,30 @@
 {
     "version": "1.7",
     "octreeDir": "data",
-    "projection": "+proj=topocentric +lat_0=-85.52602479106089 +lon_0=-129.232480459079 +h_0=0 +ellps=GRS80 +units=m",
-    "points": 3981653,
+    "projection": "+proj=utm +zone=24 +south +ellps=GRS80 +units=m",
+    "points": 3485231,
     "boundingBox": {
-        "lx": -59.507819,
-        "ly": -3384.758205,
-        "lz": -6356907.646122,
-        "ux": 129.268655,
-        "uy": -3195.981731,
-        "uz": -6356718.869648
+        "lx": -56.755132,
+        "ly": -53.016798,
+        "lz": -3.651807,
+        "ux": 148.091289,
+        "uy": 151.829623,
+        "uz": 201.194614
     },
     "tightBoundingBox": {
-        "lx": -33.587760,
-        "ly": -3372.121205,
-        "lz": -6356901.059122,
-        "ux": 13.067358,
-        "uy": -3299.940498,
-        "uz": -6356878.934122
+        "lx": -44.154681,
+        "ly": -36.336896,
+        "lz": -1.426807,
+        "ux": 6.195868,
+        "uy": 38.595511,
+        "uz": 18.737545
     },
     "pointAttributes": [
         "POSITION_CARTESIAN",
         "COLOR_PACKED",
         "CLASSIFICATION"
     ],
-    "spacing": 1.474816,
+    "spacing": 1.600363,
     "scale": 0.001000,
     "hierarchyStepSize": 5
 }

@@ -15,18 +15,19 @@
     <link rel="stylesheet" type="text/css" href="./libs/jstree/themes/mixed/style.css">
 
     <style>
-    #lg_ufc {
-        position: absolute;
-        right: 10px;
-        top: 830px;
-        z-index: 100;
-    }
-    #lg_geoce {
-        position: absolute;
-        right: 100px;
-        top: 850px;
-        z-index: 100;
-    }
+        #lg_ufc {
+            position: absolute;
+            right: 10px;
+            top: 830px;
+            z-index: 100;
+        }
+
+        #lg_geoce {
+            position: absolute;
+            right: 100px;
+            top: 850px;
+            z-index: 100;
+        }
     </style>
 
 </head>
@@ -67,7 +68,7 @@
 
         window.viewer = new Potree.Viewer(document.getElementById("potree_render_area"));
 
-        viewer.setEDLEnabled(false);
+        // viewer.setEDLEnabled(false);
         viewer.setFOV(60);
         viewer.setPointBudget(3_000_000);
         viewer.loadSettingsFromURL();
@@ -83,6 +84,61 @@
             viewer.toggleSidebar();
         });
 
+        viewer.scene.addAnnotation([599110.608, 9540597.034, 27.373], {
+            "cameraPosition": [599135.287, 9540616.727, 24.329],
+            "cameraTarget": [599102.643, 9540588.741, 11.001],
+            "title": "FALÉSIA VIVA",
+            "description": `
+                <div style="text-align: justify; ">
+                    <p>
+                        Representa a ativa dinâmica costeira da região com a presença de blocos que desprenderam da falésia e caíram próximo a base. 
+                        No entorno também podem ser vistas ruínas de uma antiga casa construída sobre a Unidade de Conservação. 
+                        É considerado um ambiente instável, por isso, recomenda-se manter um distanciamento da feição.
+                        </p>
+                    <img src="./Logo/falesia.jpg" 
+                         alt="Falésia"
+                         style="display: block;
+                         max-width: 80%;
+                         border-radius: 10px;">
+                </div>
+                `
+        });
+        viewer.scene.addAnnotation([599054.935, 9540449.748, 43.954], {
+            "cameraPosition": [599052.450, 9540448.547, 44.084],
+            "cameraTarget": [599079.786, 9540461.760, 31.656],
+            "title": "LABIRINTO",
+            "description": `
+                <div style="text-align: justify; ">
+                    <p>
+                        A Trilha do Labirinto é realizada entre as falésias, onde podem ser observadas rochas sedimentares, dunas e fontes de água.
+                        É necessário atenção ao percorre- la, evitando estar muito próximo a base das falésia.
+                        É proibido vandalizar as falésias, rabiscando e / ou desenhando gravuras.
+                        </p>
+                    <img src="./Logo/labirinto.jpg" 
+                         alt="Labirinto"
+                         style="display: block;
+                         max-width: 70%;
+                         border-radius: 10px;">
+                </div>
+                `
+        });
+        viewer.scene.addAnnotation([600696.582, 9539065.750, 20.246], {
+            "cameraPosition": [600703.971, 9539055.826, 19.003],
+            "cameraTarget": [600696.582, 9539065.750, 17.246],
+            "title": "TRONO",
+            "description": `
+                <div style="text-align: justify; ">
+                    <p>
+                        Morro Branco foi um dos seis locais escolhidos em todo o mundo para receber o trono de ferro na promoção da última temporada da série "Game of Thrones".
+                        </p>
+                    <img src="./Logo/trono.webp" 
+                         alt="Trono Série Game of Thrones"
+                         style="display: block;
+                         max-width: 50%;
+                         border-radius: 10px;">
+                </div>
+            `});
+
         Potree.loadPointCloud("./falesia_potree/cloud.js", "Falésia", e => {
             let scene = viewer.scene;
             let pointcloud = e.pointcloud;
@@ -90,7 +146,7 @@
             material.size = 1;
             material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
             material.shape = Potree.PointShape.CIRCLE;
-            
+
             scene.view.position.set(599396.001, 9540500.630, 110.841);
             scene.view.lookAt(599240.637, 9540506.457, 17.331);
             scene.addPointCloud(pointcloud);
@@ -105,11 +161,11 @@
             material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
             material.shape = Potree.PointShape.SQUARE;
             material.activeAttributeName = "rgba";
-            
+
             // Inverte a posição de renderização da nuvem de pontos
-            pointcloud.position.z *= -1;
-            pointcloud.scale.set(1, 1, -1);
-            
+            //  pointcloud.position.z *= -1;
+            //  pointcloud.scale.set(1, 1, -1);
+
             // Rendiza a nuvem de pontos na posição desejada
             scene.addPointCloud(pointcloud);
             scene.view.position.set(599386.433, 9540513.535, 115.608);
